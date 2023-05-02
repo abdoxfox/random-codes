@@ -82,22 +82,19 @@ def xordecrypt(key,data):
 def customb64(arg):
 	return frombase64("RkLC2QaVMPYgGJW/A4f7qzDb9e+t6Hr0Zp8OlNyjuxKcTw1o5EIimhBn3UvdSFXs?", "?",arg)
 datadict= {}
-with open('decrypt.txt','r') as file:
+with open('/sdcard/decrypt.txt','r') as file:
 		jsond = json.loads(file.read())
-#tunnelType=jsond['tunnelType']
-salt = 'yKNYfP' #jsond["configSalt"]
+try:
+    salt = jsond["configSalt"]
+except:
+    salt = "EVZJNI"
 
-payload ="B9iGhAlJ2H7WnZCJB9iGhAlJ2H7WnZCJ"
 
-print(xordecrypt(salt,customb64(reverseString(payload))))
-#print(tunnelType)
-#print(xordecrypt(salt,text))
-#if tunnelType =="proxy_payload_ssh":
-#	sys.stdout.write("SSH\n")
-#	sys.stdout.flush()
-#	print(f"[</>] Host : {xordecrypt(salt,customb64(reverseString(jsond['host'])))}")
-#	print(f"[</>] Port : {jsond['port']}")
-#	print
-			
+for k ,v in jsond.items():
+	try:
+	    print(f"{k} : {xordecrypt(salt,customb64(reverseString(v)))}")
+	except:
+	    
+	    print(f"{k} : {v}")
 	
 	
