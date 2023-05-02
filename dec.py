@@ -81,7 +81,7 @@ def xordecrypt(key,data):
 
 def customb64(arg):
 	return frombase64("RkLC2QaVMPYgGJW/A4f7qzDb9e+t6Hr0Zp8OlNyjuxKcTw1o5EIimhBn3UvdSFXs?", "?",arg)
-datadict= {}
+
 with open('/sdcard/decrypt.txt','r') as file:
 		jsond = json.loads(file.read())
 try:
